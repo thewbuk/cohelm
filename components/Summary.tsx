@@ -1,5 +1,5 @@
 const Summary = ({ isMet }: boolean) => {
-  return <div>{isMet}</div>;
+  return <div className="text-black dark:text-white">{isMet}</div>;
 };
 
 export default Summary;
