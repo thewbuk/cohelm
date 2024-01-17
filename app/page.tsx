@@ -2,16 +2,18 @@
 import Inputs from '@/components/Inputs';
 import Instructions from '@/components/Instructions';
 import Overview from '@/components/Overview';
+import Status from '@/components/Status';
 import Step from '@/components/Step';
 import Summary from '@/components/Summary';
 import data from '@/data/example-response.json';
 import { useState } from 'react';
 export default function Home() {
   const [responseData, setResponseData] = useState(data);
+
   return (
     <>
       <Inputs />
-      <Instructions />
+      <Instructions steps={responseData.steps} />
       <Overview
         isComplete={responseData.is_complete}
         case_id={responseData.case_id}

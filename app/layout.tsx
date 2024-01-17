@@ -29,9 +29,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <Path />
-          <Status />
-          {children}
+          <div className="mx-16">
+            {' '}
+            <Path />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

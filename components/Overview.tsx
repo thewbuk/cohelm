@@ -1,4 +1,5 @@
 import React from 'react';
+import { Separator } from './ui/separator';
 
 interface OverviewProps {
   isComplete: boolean;
@@ -19,29 +20,31 @@ const Overview: React.FC<OverviewProps> = ({
 }) => {
   return (
     <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-        Overview
-      </h1>
-      <div className="grid grid-cols-2 gap-4">
-        <p className="text-gray-900 dark:text-gray-100">
-          <strong>Case ID:</strong> {case_id}
-        </p>
-        <p className="text-gray-900 dark:text-gray-100">
-          <strong>Status:</strong> {status}
-        </p>
-        <p className="text-gray-900 dark:text-gray-100">
-          <strong>Procedure Name:</strong> {procedureName}
-        </p>
-        <p className="text-gray-900 dark:text-gray-100">
-          <strong>CPT Codes:</strong> {cptCode.join(', ')}
-        </p>
-        <p className="text-gray-900 dark:text-gray-100">
-          <strong>Summary:</strong> {summary}
-        </p>
-        <p className="text-gray-900 dark:text-gray-100">
-          <strong>Procedure Complete:</strong> {isComplete ? 'Yes' : 'No'}
-        </p>
+      <div className="pb-6">
+        <div className="space-y-1">
+          <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            Overview
+          </h1>{' '}
+          <p className="text-sm text-muted-foreground">Patient Overview</p>
+        </div>
+        <Separator className="my-4" />
+        <div className="flex h-5 items-center space-x-4 text-sm">
+          <strong>Case ID:</strong> &nbsp; {case_id}
+          <Separator orientation="vertical" />
+          <strong>Status:</strong> &nbsp; {status}
+          <Separator orientation="vertical" />
+          <strong>Procedure Name:</strong> &nbsp; {procedureName}
+          <Separator orientation="vertical" />
+          <strong>Treatment codes:</strong> &nbsp; {cptCode.join(', ')}
+          <Separator orientation="vertical" />
+          <strong>Procedure Complete:</strong> &nbsp;{' '}
+          {isComplete ? 'Yes' : 'No'}
+        </div>
       </div>
+
+      <p className="text-gray-900 dark:text-gray-100 border-slate-800 rounded-md border-1">
+        <strong>Summary:</strong> {summary}
+      </p>
     </div>
   );
 };

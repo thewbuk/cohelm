@@ -15,12 +15,29 @@ import {
 } from '@/components/ui/popover';
 import { useState } from 'react';
 
-type Status = {
-  value: string;
-  label: string;
-};
+interface Evidence {
+  content: string;
+  page_number: number;
+  pdf_id: string;
+  pdf_name: string | null;
+  event_datetime: string | null;
+}
 
-const statuses: Status[] = [
+interface Option {
+  key: string;
+  text: string;
+  selected: boolean;
+}
+interface StepProps {
+  number: string;
+  question: string;
+  options: Option[];
+  decision: string;
+  reasoning: string;
+  evidence: Evidence[];
+}
+
+const statuses: StepProps[] = [
   {
     value: 'backlog',
     label: 'Backlog',
@@ -43,12 +60,13 @@ const statuses: Status[] = [
   },
 ];
 
-const Instructions = () => {
+const Instructions = ({ steps }: { steps: Array<string> }) => {
+  console.log(steps);
   const [open, setOpen] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState<Status | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<StepProps | null>(null);
   return (
     <div className="flex items-center space-x-4">
-      <p className="text-sm text-muted-foreground">Status</p>
+      <p className="text-sm text-muted-foreground">Jump to</p>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button variant="outline" className="w-[150px] justify-start">
