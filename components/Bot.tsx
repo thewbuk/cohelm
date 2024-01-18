@@ -1,37 +1,8 @@
 'use client';
 
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from '@/components/ui/command';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
-import * as z from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-
-import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { IconArrowElbow, IconArrowRight } from '@/components/ui/icons';
 import { useChat } from 'ai/react';
-import { OpenAIStream, StreamingTextResponse } from 'ai';
-import { Configuration, OpenAIApi } from 'openai-edge';
-
 import { Input } from '@/components/ui/input';
 import { Bot, CheckIcon, Minimize2, Twitch, Youtube } from 'lucide-react';
 import BotEmptyMessege from '@/components/BotEmptyMessege';
@@ -40,6 +11,13 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import UserAvatar from './UserAvatar';
+
+declare global {
+  interface Window {
+    MyNamespace: any;
+  }
+}
+
 const ChatBot = () => {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
   const isLocalhost =
