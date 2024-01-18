@@ -5,6 +5,15 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        port: '',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
