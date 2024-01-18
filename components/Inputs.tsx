@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import dynamic from 'next/dynamic';
+import { Check } from 'lucide-react';
 
 const PDFReader = dynamic(() => import('../components/PDFReader'), {
   ssr: false,
@@ -67,6 +68,7 @@ const Inputs = () => {
             type="button"
             onClick={() => handleSubmit(medicalRecord, 'medicalRecord')}
           >
+            <Check className="h4 w-4 mr-2" />
             Submit
           </Button>
           <PDFReader type="medicalRecord" />
@@ -86,6 +88,7 @@ const Inputs = () => {
             type="button"
             onClick={() => handleSubmit(guidelines, 'guidelines')}
           >
+            <Check className="h4 w-4 mr-2" />
             Submit
           </Button>
           <PDFReader type="guidelines" />

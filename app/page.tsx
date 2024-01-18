@@ -13,7 +13,9 @@ export default function Home() {
   return (
     <>
       <Inputs />
-      <Instructions steps={responseData.steps} />
+      <Instructions
+        steps={responseData.steps.map(step => ({ ...step, number: step.key }))}
+      />
       <Overview
         isComplete={responseData.is_complete}
         case_id={responseData.case_id}

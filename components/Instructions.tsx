@@ -30,6 +30,7 @@ interface Option {
 }
 
 interface StepProps {
+  key: string;
   number: string;
   question: string;
   options: Option[];

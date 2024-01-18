@@ -1,3 +1,4 @@
+import { Check } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Summary = ({ isMet }: { isMet: boolean }) => {
@@ -7,7 +8,10 @@ const Summary = ({ isMet }: { isMet: boolean }) => {
         className={`p-4 rounded-lg shadow-md text-white ${isMet ? 'bg-green-500' : 'bg-red-500/80'} flex justify-between items-center`}
       >
         {isMet ? 'Condition met' : 'Condition not met'}
-        <Button variant="outline">Submit</Button>
+        <Button variant="outline">
+          <Check className="h4 w-4 mr-2" />
+          Submit
+        </Button>
       </div>
     </>
   );

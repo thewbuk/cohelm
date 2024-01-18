@@ -8,7 +8,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/ui/collapsible';
-import { ArrowBigRightDash, ArrowDownUp, CircleOff, Cog } from 'lucide-react';
+import {
+  ArrowBigRightDash,
+  ArrowDownUp,
+  CheckCheck,
+  CircleOff,
+  Cog,
+} from 'lucide-react';
 import {
   Sheet,
   SheetClose,
@@ -100,7 +106,11 @@ const Step: React.FC<StepProps> = ({
               className={`p-2 rounded ${isFinal ? 'bg-green-500 text-white' : 'bg-blue-500 text-white'} w-flex items-center space-x-3`}
             >
               {isFinal ? 'Final decision' : 'Not final decision'}
-              <CircleOff className="h-4 w-4 ml-1" />
+              {!isFinal ? (
+                <CircleOff className="h-4 w-4 ml-1" />
+              ) : (
+                <CheckCheck className="h-4 w-4 ml-1" />
+              )}
             </Button>
           </div>
         </div>
@@ -206,7 +216,7 @@ const Step: React.FC<StepProps> = ({
                       <Label htmlFor="pdf_id" className="text-right w-16">
                         PDF ID:
                       </Label>
-                      <span className="text-gray-900 dark:text-gray-100">
+                      <span className="text-gray-900 dark:text-gray-100 overflow-scroll overflow-x-visible">
                         {ev.pdf_id || 'N/A'}
                       </span>
                     </div>
