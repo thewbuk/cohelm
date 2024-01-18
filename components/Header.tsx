@@ -31,7 +31,7 @@ const Header = () => {
         <div className="flex items-end justify-end flex-1 space-x-4">
           <div className="border border-1 border-blue-400/50 hover:bg-blue-600/20 rounded-lg">
             <Button variant={'ghost'} className="rounded-lg">
-              <Link href="/synthia/resources" prefetch={false}>
+              <Link href="https://github.com/thewbuk/cohelm" prefetch={false}>
                 <Github className="w-6 h-6 text-black dark:text-white " />
               </Link>
             </Button>
