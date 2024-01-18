@@ -29,7 +29,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <div className="mx-16">
+          <div className="mx-16 mb-4">
             {' '}
             <Path />
             {children}

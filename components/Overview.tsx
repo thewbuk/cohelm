@@ -29,16 +29,48 @@ const Overview: React.FC<OverviewProps> = ({
         </div>
         <Separator className="my-4" />
         <div className="flex h-5 items-center space-x-4 text-sm">
-          <strong>Case ID:</strong> &nbsp; {case_id}
-          <Separator orientation="vertical" />
-          <strong>Status:</strong> &nbsp; {status}
-          <Separator orientation="vertical" />
-          <strong>Procedure Name:</strong> &nbsp; {procedureName}
-          <Separator orientation="vertical" />
-          <strong>Treatment codes:</strong> &nbsp; {cptCode.join(', ')}
-          <Separator orientation="vertical" />
-          <strong>Procedure Complete:</strong> &nbsp;{' '}
-          {isComplete ? 'Yes' : 'No'}
+          <div className="flex items-center space-x-2">
+            <strong>Case ID:</strong>
+            <span className="rounded-md bg-blue-300/70 p-2">{case_id}</span>
+          </div>
+          <Separator
+            className="dark:bg-white  flex justify-start"
+            orientation="vertical"
+          />
+          <div className="flex items-center space-x-2">
+            <strong>Status:</strong>
+            <span className="rounded-md bg-blue-300/70 p-2">{status}</span>
+          </div>
+          <Separator
+            className="dark:bg-white flex justify-start"
+            orientation="vertical"
+          />
+          <div className="flex items-center space-x-2">
+            <strong>Procedure Name:</strong>
+            <span className="rounded-md bg-blue-300/70 p-2">
+              {procedureName}
+            </span>
+          </div>
+          <Separator
+            className="dark:bg-white flex justify-start"
+            orientation="vertical"
+          />
+          <div className="flex items-center space-x-2">
+            <strong>Treatment codes:</strong>
+            <span className="rounded-md bg-blue-300/70 p-2">
+              {cptCode.join(', ')}
+            </span>
+          </div>
+          <Separator
+            className="dark:bg-white flex justify-start"
+            orientation="vertical"
+          />
+          <div className="flex items-center space-x-2">
+            <strong>Procedure Complete:</strong>
+            <span className="rounded-md bg-blue-300/70 p-2">
+              {isComplete ? 'Yes' : 'No'}
+            </span>
+          </div>
         </div>
       </div>
 

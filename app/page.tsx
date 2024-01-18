@@ -31,6 +31,8 @@ export default function Home() {
           decision={step.decision}
           reasoning={step.reasoning}
           evidence={step.evidence}
+          nextStep={step.next_step}
+          isFinal={step.is_final}
         />
       ))}
       <Summary isMet={responseData.is_met} />

@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Command,
@@ -13,7 +14,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { useState } from 'react';
 
 interface Evidence {
   content: string;
@@ -28,6 +28,7 @@ interface Option {
   text: string;
   selected: boolean;
 }
+
 interface StepProps {
   number: string;
   question: string;
@@ -37,61 +38,40 @@ interface StepProps {
   evidence: Evidence[];
 }
 
-const statuses: StepProps[] = [
-  {
-    value: 'backlog',
-    label: 'Backlog',
-  },
-  {
-    value: 'todo',
-    label: 'Todo',
-  },
-  {
-    value: 'in progress',
-    label: 'In Progress',
-  },
-  {
-    value: 'done',
-    label: 'Done',
-  },
-  {
-    value: 'canceled',
-    label: 'Canceled',
-  },
-];
-
-const Instructions = ({ steps }: { steps: Array<string> }) => {
-  console.log(steps);
+const Instructions = ({ steps }: { steps: StepProps[] }) => {
   const [open, setOpen] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState<StepProps | null>(null);
+  const [selectedStep, setSelectedStep] = useState<StepProps | null>(null);
+
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-4 mb-8">
       <p className="text-sm text-muted-foreground">Jump to</p>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-[150px] justify-start">
-            {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
+          <Button
+            variant="outline"
+            className="min-w-[150px] justify-start text-center flex justify-center"
+          >
+            {selectedStep ? <>{selectedStep.question}</> : <>Select Step</>}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="p-0" side="right" align="start">
           <Command>
-            <CommandInput placeholder="Change status..." />
+            <CommandInput placeholder="Select Step..." />
             <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
+              {steps.length === 0 && (
+                <CommandEmpty>No steps found.</CommandEmpty>
+              )}
               <CommandGroup>
-                {statuses.map(status => (
+                {steps.map((step, index) => (
                   <CommandItem
-                    key={status.value}
-                    value={status.value}
-                    onSelect={value => {
-                      setSelectedStatus(
-                        statuses.find(priority => priority.value === value) ||
-                          null
-                      );
+                    key={step.number}
+                    value={step.number}
+                    onSelect={() => {
+                      setSelectedStep(step);
                       setOpen(false);
                     }}
                   >
-                    {status.label}
+                    Step {index + 1}: {step.question}
                   </CommandItem>
                 ))}
               </CommandGroup>
