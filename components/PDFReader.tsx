@@ -1,4 +1,3 @@
-//@ts-ignore
 'use client';
 import React, { useState } from 'react';
 import { useCallback } from 'react';
@@ -28,7 +27,7 @@ const maxWidth = 400;
 type PDFFile = string | File | null;
 
 export default function PDFReader({ type }: { type: string }) {
-  const [numPages, setNumPages] = useState(null);
+  const [numPages, setNumPages] = useState<number | null>(null);
   const [pageNumber, setPageNumber] = useState(1);
 
   const file =
