@@ -1,3 +1,4 @@
+//@ts-ignore
 'use client';
 import React, { useState } from 'react';
 import { useCallback } from 'react';
