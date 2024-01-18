@@ -9,21 +9,18 @@ import BotEmptyMessege from '@/components/BotEmptyMessege';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserAvatar from './UserAvatar';
-
-declare global {
-  interface Window {
-    MyNamespace: any;
-  }
-}
 
 const ChatBot = () => {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
-  const isLocalhost =
-    window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1';
-
+  const [isLocalhost, setIsLocalhost] = useState(false);
+  useEffect(() => {
+    setIsLocalhost(
+      window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1'
+    );
+  }, []);
   // const isLocalhost = false;
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
