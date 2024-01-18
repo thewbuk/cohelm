@@ -7,6 +7,7 @@ import Path from '@/components/Path';
 import Status from '@/components/Status';
 import Summary from '@/components/Summary';
 import ChatBot from '@/components/Bot';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
             {' '}
             <Path />
             {children}
+            <Analytics />
             <ChatBot />
           </div>
         </ThemeProvider>
